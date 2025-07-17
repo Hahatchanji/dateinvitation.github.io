@@ -1,0 +1,88 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+}
+
+.video-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.centered-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the image is above the video */
+    width: 1000px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease; /* Smooth transition */
+    animation: slideUp 1s ease forwards, shake 0.7s ease 1s forwards; /* Add shake animation after slide */
+}
+
+.open-button {
+    position: absolute;
+    top: 77%; /* Adjust position as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px; /* Button padding */
+    font-size: 16px; /* Font size */
+    color: #d999d3; /* Text color */
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #d999d3; /* White border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    z-index: 3; /* Ensure the button is above the image */
+    animation: slideUp 1s ease forwards; /* Add animation */
+    animation-delay: 0.2s; /* Delay the button animation slightly */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translate(-50%, 20%); /* Start 20% below its final position */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translate(-50%, -50%); /* End at its final position */
+        opacity: 1; /* End fully visible */
+    }
+}
+
+@keyframes shake {
+    0% { transform: translate(-50%, -50%); }
+    10% { transform: translate(-50%, -50%) translateX(-5px); }
+    20% { transform: translate(-50%, -50%) translateX(5px); }
+    30% { transform: translate(-50%, -50%) translateX(-5px); }
+    40% { transform: translate(-50%, -50%) translateX(5px); }
+    50% { transform: translate(-50%, -50%) translateX(-5px); }
+    60% { transform: translate(-50%, -50%) translateX(5px); }
+    70% { transform: translate(-50%, -50%) translateX(-5px); }
+    80% { transform: translate(-50%, -50%) translateX(5px); }
+    90% { transform: translate(-50%, -50%) translateX(-5px); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+.centered-image:hover {
+    transform: translate(-50%, -50%) scale(1.1); /* Scale up on hover */
+}
+
+.open-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+    color: #fff; /* Change text color on hover */
+}
